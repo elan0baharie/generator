@@ -10,15 +10,19 @@
   </head>
   <body>
     <div class="container">
+      <div class="jumbotron">
+        <h1>Generator</h1>
+      </div>
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-2 col-md-2">
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8 col-md-8 cnt-pnl">
           <form id="trns-form">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label" for="userSent">Input sentence:</label>
-              <input class="form-control col-sm-10" id="userSent" type="text" placeholder="Enter a sentence without punctuation or numbers please">
+            <div class="form-group">
+              <label class="col-form-label" for="userSent">Input sentence:</label>
+              <input id="userSent" type="text" placeholder="Enter a sentence without punctuation or numbers please">
             </div>
+            <button class="btn btn-default" id="obj-btn" type="button">Submit</button>
             <fieldset>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="response">Sentence Output:</label>
@@ -28,7 +32,9 @@
             </fieldset>
           </form>
         </div>
-      </div><!--Container Div-->
+        <div class="col-lg-2 col-md-2">
+        </div>
+      </div><!--Row Div-->
     </div><!--Container Div-->
   </body>
 </html>
