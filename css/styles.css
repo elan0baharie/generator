@@ -23,7 +23,9 @@ body {
 }
 
 .container {
+  padding: 0;
   margin: 0;
+  height: 100%;
   width: 100%;
 }
 
@@ -34,4 +36,32 @@ body {
 .bg-primary {
   color: white;
   font-weight: bold;
+}
+
+.wd-panel-top {
+  background-image: url(../img/wood.jpg);
+  border: 8px solid black;
+  border-bottom-width: 0px;
+  border-radius: 8px 8px 0px 0px;
+  height: 60px;
+}
+
+.wd-panel-bottom {
+  background-image: url(../img/wood.jpg);
+  border: 8px solid black;
+  border-top-width: 0px;
+  border-radius: 0px 0px 8px 8px;
+  height: 60px;
+
+}
+
+.wd-panel {
+  background-image: url(../img/wood.jpg);
+  border: 8px solid black;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  height: 100px;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 20px;
+  display: none;
 }

@@ -1,9 +1,9 @@
 //U.I.
 function Generator () {
+  var agilArry = [];
+  var endurArry = [];
+  var reasonArry = [];
   var attValArry = [];
-  var tempagilArry = [];
-  var tempendurArry = [];
-  var tempreasonArry = [];
   this.prmAttSlctr = function () {
     var tempAttValArry = [];
 
@@ -13,59 +13,42 @@ function Generator () {
       tempAttValArry.push(prmAtts[rlAtt]);
     }
     this.attValArry = tempAttValArry;
-    return tempAttValArry;
+    $("#dspAttArray").text(this.attValArry);
   }
+  this.attValDiv = function (vlAr) {
+    var indxADigit = vlAr.indexOf("A");
+    var indxEDigit = vlAr.indexOf("E");
+    var indxRDigit = vlAr.indexOf("R");
+    var tempArray = vlAr.length;
 
-}
 
+    if (indxADigit !== -1) {
+      var tmpAHold =  vlAr.slice(indxADigit, indxADigit + 1);
+      console.log(agilArry);
+      console.log(typeof agilArry);
+      agilArry.push(tmpAHold.toString());
+      vlAr.splice(indxADigit, 1);
+      this.attValDiv(vlAr);
 
-var agilArry = [];
-var endurArry = [];
-var reasonArry = [];
+    } else if (indxEDigit !== -1) {
+      var tmpEHold =  vlAr.slice(indxEDigit, indxEDigit + 1);
+      endurArry.push(tmpEHold.toString());
+      vlAr.splice(indxEDigit, 1);
+      this.attValDiv(vlAr);
 
-// function gnrtrHeart() {
-//   this.primeAtts = ["A", "E", "R"];
-//   this.rlAtt = Math.round(Math.random() * 2);
-//   return this.primeAtts[rlAtt];
-// }
-//
-// var createValArry = function () {
-//   for(var i = 0; i <= 4; i++) {
-//     attValArry.push(gnrtrHeart());
-//   }
-//   return attValArry;
-// }
+    } else if (indxRDigit !== -1) {
+      var tmpRHold =  vlAr.slice(indxRDigit, indxRDigit + 1);
+      reasonArry.push(tmpRHold.toString());
+      vlAr.splice(indxRDigit, 1);
+      this.attValDiv(vlAr);
 
-Generator.prototype.attValDiv = function (vlAr) {
-  var indxADigit = vlAr.indexOf("A");
-  var indxEDigit = vlAr.indexOf("E");
-  var indxRDigit = vlAr.indexOf("R");
-  var tempArray = vlAr.length;
-  console.log(tempArray);
+    } else {
+      $("#dspEndArray").text(endurArry);
+      $("#dspAgArray").text(agilArry);
+      $("#dspReaArray").text(reasonArry);
+      return;
+    }
 
-  if (indxADigit !== -1) {
-    var tmpAHold =  vlAr.slice(indxADigit, indxADigit + 1);
-    agilArry.push(tmpAHold.toString());
-    vlAr.splice(indxADigit, 1);
-    this.attValDiv(vlAr);
-
-  } else if (indxEDigit !== -1) {
-    var tmpEHold =  vlAr.slice(indxEDigit, indxEDigit + 1);
-    endurArry.push(tmpEHold.toString());
-    vlAr.splice(indxEDigit, 1);
-    this.attValDiv(vlAr);
-
-  } else if (indxRDigit !== -1) {
-    var tmpRHold =  vlAr.slice(indxRDigit, indxRDigit + 1);
-    reasonArry.push(tmpRHold.toString());
-    vlAr.splice(indxRDigit, 1);
-    this.attValDiv(vlAr);
-
-  } else {
-    this.tempreasonArry = reasonArry;
-    this.tempendurArry = endurArry;
-    this.tempagilArry = agilArry;
-    return;
   }
 
 }
@@ -76,7 +59,7 @@ Generator.prototype.attValDiv = function (vlAr) {
 
 $(document).ready(function() {
 
-  var newGenerator = new Generator();
+
 
 
   $("#obj-btn").click(function(event) {
@@ -89,15 +72,15 @@ $(document).ready(function() {
 
   $("#trns-form").submit(function(event) {
     event.preventDefault();
-    var tmpArr = newGenerator.prmAttSlctr();
-    console.log(newGenerator.attValArry);
-    var ciphRes = newGenerator.attValDiv(tmpArr);
-    console.log(newGenerator.tempagilArry);
-    console.log(newGenerator.tempendurArry);
-    console.log(newGenerator.tempreasonArry);
+    var newGenerator = new Generator();
+    newGenerator.prmAttSlctr();
+    $("#dspAttArray").show(800);
+    newGenerator.attValDiv(newGenerator.attValArry);
 
-
-    $("#response").val(ciphRes);
+    $("#dspEndArray").show(1200);
+    $("#dspAgArray").show(1400);
+    $("#dspReaArray").show(1600);
   });
+
 
 });// Doc Ready
